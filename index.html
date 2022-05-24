@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./style.css" rel="stylesheet" />
+    <script src="./password-script.js"></script>
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Password Generator</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Passw<i class="bx bxs-lock"></i>rd Generator</h1>
+      <form>
+        <div id="options">
+          <h2>Options</h2>
+          <label for="password_length">select password length:</label>
+          <select id="password_length">
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option></select
+          ><br />
+          <input type="checkbox" id="numbers" name="options" value="numbers" />
+          <label for="numbers">numbers 0-9</label><br />
+
+          <input
+            type="checkbox"
+            id="uppercase_letters"
+            name="options"
+            value="uppercase_letters"
+          />
+          <label for="uppercase_letters">uppercase letters (A-Z)</label><br />
+
+          <input
+            type="checkbox"
+            id="lowercase_letters"
+            name="options"
+            value="lowercase_letters"
+          />
+          <label for="lowercase_letters">uppercase letters (a-z)</label><br />
+          <input
+            type="checkbox"
+            id="special_symbols"
+            name="options"
+            value="special_symbols"
+          />
+          <label for="special_symbols">special symbols (!,@,#,$,%,^,&,*)</label
+          ><br />
+        </div>
+      </form>
+      <div id="solution-box">
+        <button onclick="handleSubmit()">generate</button>
+      </div>
+    </div>
+  </body>
+</html>
