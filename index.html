@@ -43,18 +43,20 @@
             name="options"
             value="lowercase_letters"
           />
-          <label for="lowercase_letters">uppercase letters (a-z)</label><br />
+          <label for="lowercase_letters">lowercase letters (a-z)</label><br />
           <input
             type="checkbox"
-            id="special_symbols"
+            id="special_characters"
             name="options"
-            value="special_symbols"
+            value="special_characters"
           />
-          <label for="special_symbols">special symbols (!,@,#,$,%,^,&,*)</label
+          <label for="special_characters"
+            >special characters (!,@,#,$,%,^,&)</label
           ><br />
         </div>
       </form>
       <div id="solution-box">
+        <h2 id="newPassword"></h2>
         <button onclick="handleSubmit()">generate</button>
       </div>
     </div>
