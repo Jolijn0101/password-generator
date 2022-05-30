@@ -2,12 +2,39 @@ let size;
 let optionsArr = [];
 let password_arr = [];
 
+//will handle the information after submitting the form
+function handleSubmit() {
+  //writes the value choosen as a number to size
+  size = parseFloat(document.getElementById('password_length').value);
+
+  //loops through all options and pushes only the checked ones to optionsArr
+  let checkboxes = document.getElementsByName('options');
+  for (let i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      optionsArr.push(checkboxes[i].value);
+    }
+  }
+
+  // If there are no options chosen give an alert and leave the function
+  if (optionsArr.length === 0) {
+    alert('choose a password option');
+    clearOptions();
+    return null;
+  }
+
+  // after submitting the info start the generatePassword function
+  generatePassword();
+}
+
+//Generates a new password matching all the requirements
 function generatePassword() {
+  //fill the password_array with size x "*" elements
   password_arr = new Array(size).fill('*', 0, size);
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
   const special_characters = '!@#$%^&';
   let newIndex;
 
+  //will be used to generate a new letter, number or special character and writes it to the right place in the password_arr
   function switcher(option, index) {
     switch (option) {
       case 'numbers':
@@ -48,32 +75,19 @@ function generatePassword() {
       switcher(optionsArr[Math.floor(Math.random() * optionsArr.length)], i);
     }
   }
-  console.log(password_arr);
+
+  // display the new password
   document.querySelector('#newPassword').innerHTML =
     'Password: ' + password_arr.join('');
+
+  // change generate to regenerate
   document.querySelector('button').innerHTML = 'regenerate';
+
+  //make a call to clearOptions to clear all the variables needed
   clearOptions();
 }
 
-function handleSubmit() {
-  size = parseFloat(document.getElementById('password_length').value);
-
-  let checkboxes = document.getElementsByName('options');
-  for (let i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i].checked) {
-      optionsArr.push(checkboxes[i].value);
-    }
-  }
-
-  if (optionsArr.length === 0) {
-    alert('choose a password option');
-    clearOptions();
-    return null;
-  }
-
-  generatePassword();
-}
-
+//function for clearing the needed variables
 function clearOptions() {
   size = 0;
   optionsArr = [];
